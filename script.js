@@ -1,3 +1,6 @@
+const tipBubble = document.querySelector('[data-tooltip]')
+const textBubble = document.querySelector('.help-text')
+
 document.addEventListener("keydown", e => {
     const container = document.querySelector(".container")
   
@@ -19,4 +22,8 @@ document.addEventListener("keydown", e => {
         container.classList.replace("y-top", "y-center")
         break
     }
+  })
+
+  textBubble.addEventListener("click", () => {
+    console.log(tipBubble)
   })
