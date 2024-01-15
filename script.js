@@ -23,7 +23,3 @@ document.addEventListener("keydown", e => {
         break
     }
   })
-
-  textBubble.addEventListener("click", () => {
-    console.log(tipBubble)
-  })
