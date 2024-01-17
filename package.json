@@ -1,0 +1,16 @@
+{
+  "name": "tooltip-library",
+  "version": "1.0.0",
+  "description": "Tool tip bubble pops up on hover",
+  "main": "script.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
