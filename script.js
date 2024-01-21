@@ -1,5 +1,6 @@
 const tipBubble = document.querySelector('[data-tooltip]')
 const textBubble = document.querySelector('.help-text')
+import "./tooltip"
 
 document.addEventListener("keydown", e => {
     const container = document.querySelector(".container")
