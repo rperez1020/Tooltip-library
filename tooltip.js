@@ -30,4 +30,6 @@ function positionTooltip(tooltip, element){
     const tooltipRect = tooltip.getBoundingClientRect()
 
     tooltip.style.top =    `${elementRect.top - tooltipRect.height}px`
+    tooltip.style.left =    `${elementRect.left + elementRect.width / 2 - tooltipRect.width / 2}px`
+
 }
