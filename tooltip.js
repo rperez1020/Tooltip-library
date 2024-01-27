@@ -34,30 +34,30 @@ function positionTooltip(tooltip, element){
     tooltip.style.top =    `${elementRect.top - tooltipRect.height - spacing}px`
     tooltip.style.left =    `${elementRect.left + elementRect.width / 2 - tooltipRect.width / 2}px`
 
-    const bounds = isOutOfBounds(tooltip)
+    const bounds = isOutOfBounds(tooltip, spacing)
     
     if(bounds.top){
         resetTooltipPosition(tooltip)
     }
     if(bounds.right){
-        tooltip.style.right = 0
+        tooltip.style.right = `${spacing}px`
         tooltip.style.left = "initial"
     }
     if(bounds.left){
-
+        tooltip.style.left = `${spacing}px`
     }
 
 }
 
-function isOutOfBounds(element){
+function isOutOfBounds(element, spacing){
     const rect = element.getBoundingClientRect()
     const containerRect = tooltipContainer.getBoundingClientRect()
 
     return{
-        left: rect.left < containerRect.left,
-        right: rect.right >= containerRect.right,
-        top: rect.top < containerRect.top,
-        bottom: rect.bottom > containerRect.bottom
+        left: rect.left < containerRect.left + spacing,
+        right: rect.right >= containerRect.right - spacing,
+        top: rect.top < containerRect.top + spacing,
+        bottom: rect.bottom > containerRect.bottom - spacing
     }
 }
 
