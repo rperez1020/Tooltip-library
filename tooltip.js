@@ -36,23 +36,7 @@ function positionTooltip(tooltip, element){
         return
     }
     positionTooltipBottom(tooltip, elementRect, spacing)
-    /*
-    tooltip.style.top =    `${elementRect.top - tooltipRect.height - spacing}px`
-    tooltip.style.left =    `${elementRect.left + elementRect.width / 2 - tooltipRect.width / 2}px`
-
-    const bounds = isOutOfBounds(tooltip, spacing)
     
-    if(bounds.top){
-        resetTooltipPosition(tooltip)
-    }
-    if(bounds.right){
-        tooltip.style.right = `${spacing}px`
-        tooltip.style.left = "initial"
-    }
-    if(bounds.left){
-        tooltip.style.left = `${spacing}px`
-    }
-    */
 }
 
 function positionTooltipTop(tooltip, elementRect, spacing){
@@ -120,5 +104,3 @@ function resetTooltipPosition(tooltip){
     tooltip.style.right = "initial"
 
 }
-
-// 33:45
