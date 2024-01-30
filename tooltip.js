@@ -1,6 +1,6 @@
 import addGlobalEventListener from "./utils/addGlobalEventListener";
 
-const DEFAULT_SPACING = "5"
+const DEFAULT_SPACING = 5
 const POSITION_ORDER = ["top", "bottom", "left", "right"]
 
 const tooltipContainer = document.createElement('div')
@@ -32,7 +32,10 @@ function positionTooltip(tooltip, element){
     const elementRect = element.getBoundingClientRect()
     const spacing = parseInt(element.dataset.spacing) || DEFAULT_SPACING
 
-    tooltipTop(tooltip, elementRect, spacing)
+    if(positionTooltipTop(tooltip, elementRect, spacing)){
+        return
+    }
+    positionTooltipBottom(tooltip, elementRect, spacing)
     /*
     tooltip.style.top =    `${elementRect.top - tooltipRect.height - spacing}px`
     tooltip.style.left =    `${elementRect.left + elementRect.width / 2 - tooltipRect.width / 2}px`
@@ -52,7 +55,7 @@ function positionTooltip(tooltip, element){
     */
 }
 
-function tooltipTop(tooltip, elementRect, spacing){
+function positionTooltipTop(tooltip, elementRect, spacing){
 
     const tooltipRect = tooltip.getBoundingClientRect()
     tooltip.style.top =    `${elementRect.top - tooltipRect.height - spacing}px`
@@ -62,6 +65,7 @@ function tooltipTop(tooltip, elementRect, spacing){
     
     if(bounds.top){
         resetTooltipPosition(tooltip)
+        return false
     }
     if(bounds.right){
         tooltip.style.right = `${spacing}px`
@@ -70,6 +74,30 @@ function tooltipTop(tooltip, elementRect, spacing){
     if(bounds.left){
         tooltip.style.left = `${spacing}px`
     }
+    return true
+
+}
+
+function positionTooltipBottom(tooltip, elementRect, spacing){
+
+    const tooltipRect = tooltip.getBoundingClientRect()
+    tooltip.style.top =    `${elementRect.bottom + spacing}px`
+    tooltip.style.left =    `${elementRect.left + elementRect.width / 2 - tooltipRect.width / 2}px`
+
+    const bounds = isOutOfBounds(tooltip, spacing)
+    
+    if(bounds.bottom){
+        resetTooltipPosition(tooltip)
+        return false
+    }
+    if(bounds.right){
+        tooltip.style.right = `${spacing}px`
+        tooltip.style.left = "initial"
+    }
+    if(bounds.left){
+        tooltip.style.left = `${spacing}px`
+    }
+    return true
 
 }
 
@@ -92,3 +120,5 @@ function resetTooltipPosition(tooltip){
     tooltip.style.right = "initial"
 
 }
+
+// 33:45
